@@ -13,31 +13,34 @@
         }
         
         body {
-            background-color: #f5f7fa;
+            background-color: #f0f2f5;
             color: #333;
             line-height: 1.6;
-            padding: 20px;
+            padding: 0;
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
         
         header {
             background: linear-gradient(135deg, #1e88e5, #0d47a1);
             color: white;
-            padding: 30px 20px;
+            padding: 25px 30px;
             text-align: center;
         }
         
         h1 {
             font-size: 28px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
         
         .description {
@@ -46,35 +49,36 @@
         }
         
         .search-container {
-            padding: 20px;
+            padding: 20px 30px;
             background-color: #f8f9fa;
             border-bottom: 1px solid #eaeaea;
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
             align-items: center;
-            justify-content: center;
         }
         
         .search-field {
             flex: 1;
-            min-width: 200px;
+            min-width: 250px;
         }
         
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: bold;
             color: #555;
+            font-size: 14px;
         }
         
         input, select {
             width: 100%;
-            padding: 10px 15px;
+            padding: 12px 15px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 16px;
             transition: all 0.3s;
+            background-color: white;
         }
         
         input:focus, select:focus {
@@ -83,54 +87,44 @@
             outline: none;
         }
         
-        .sort-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .student-list {
+            padding: 20px 30px;
+            overflow-y: auto;
+            max-height: 600px;
         }
         
-        .results-info {
-            padding: 15px 20px;
-            background-color: #e3f2fd;
-            border-bottom: 1px solid #bbdefb;
-            font-size: 14px;
-            color: #1565c0;
+        .student-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
         }
         
-        .table-container {
-            overflow-x: auto;
+        .student-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            border: 1px solid #eaeaea;
         }
         
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            border-color: #bbdefb;
         }
         
-        th {
-            background-color: #e3f2fd;
-            color: #1565c0;
+        .student-name {
+            font-size: 18px;
             font-weight: bold;
-            padding: 15px;
-            text-align: left;
-            position: sticky;
-            top: 0;
-            border-bottom: 2px solid #bbdefb;
+            margin-bottom: 8px;
+            color: #333;
         }
         
-        td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #eaeaea;
-        }
-        
-        tr:hover {
-            background-color: #f5f9ff;
-        }
-        
-        .no-results {
-            padding: 40px;
-            text-align: center;
-            color: #757575;
-            font-style: italic;
+        .student-info {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
         }
         
         .gender-female {
@@ -141,12 +135,29 @@
             color: #2196f3;
         }
         
+        .no-results {
+            padding: 40px;
+            text-align: center;
+            color: #757575;
+            font-style: italic;
+            grid-column: 1 / -1;
+        }
+        
+        .results-info {
+            padding: 15px 30px;
+            background-color: #e3f2fd;
+            border-bottom: 1px solid #bbdefb;
+            font-size: 14px;
+            color: #1565c0;
+        }
+        
         footer {
             padding: 20px;
             text-align: center;
             color: #757575;
             font-size: 14px;
             border-top: 1px solid #eaeaea;
+            background-color: #f8f9fa;
         }
         
         @media (max-width: 768px) {
@@ -158,9 +169,8 @@
                 width: 100%;
             }
             
-            th, td {
-                padding: 10px 8px;
-                font-size: 14px;
+            .student-cards {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -169,7 +179,7 @@
     <div class="container">
         <header>
             <h1>学生信息查询系统</h1>
-            <p class="description">龙会镇中心学校2019级学生信息</p>
+            <p class="description">龙会镇中心学校2019级学生信息查询</p>
         </header>
         
         <div class="search-container">
@@ -178,11 +188,17 @@
                 <input type="text" id="name-search" placeholder="输入学生姓名...">
             </div>
             
-            <div class="sort-container">
-                <label for="sort-select">排序方式</label>
-                <select id="sort-select">
-                    <option value="name-asc">姓名 A-Z</option>
-                    <option value="name-desc">姓名 Z-A</option>
+            <div class="search-field">
+                <label for="id-search">按身份证搜索</label>
+                <input type="text" id="id-search" placeholder="输入身份证号...">
+            </div>
+            
+            <div class="search-field">
+                <label for="age-search">按年龄搜索</label>
+                <select id="age-search">
+                    <option value="">全部年龄</option>
+<option value="12">12岁</option>
+                    <option value="13">13岁</option>
                 </select>
             </div>
         </div>
@@ -191,19 +207,8 @@
             共找到 <span id="result-count">0</span> 名学生
         </div>
         
-        <div class="table-container">
-            <table id="student-table">
-                <thead>
-                    <tr>
-                        <th>姓名</th>
-                        <th>性别</th>
-                        <th>身份证号</th>
-                    </tr>
-                </thead>
-                <tbody id="student-data">
-                    <!-- 数据将通过JavaScript动态加载 -->
-                </tbody>
-            </table>
+        <div class="student-list" id="student-list">
+            <!-- 学生数据将通过JavaScript动态加载 -->
         </div>
         
         <footer>
@@ -212,9 +217,11 @@
     </div>
 
     <script>
-        // 六年级学生数据 - 请在此处填写您的学生数据
-        const studentData = [
-
+        // 学生数据 - 请在此处填入您的实际数据
+        // 注意：每个学生对象需要包含"姓名"、"性别"、"身份证号"字段
+        // 系统会自动根据身份证号计算年龄
+        // 六年级学生数据（从您提供的Excel文件中提取）
+const studentData = [
     // 六年级(1)班
     {"姓名": "曾浩然", "性别": "男", "身份证号": "511024201209183534"},
     {"姓名": "陈范伟", "性别": "男", "身份证号": "510303201210023013"},
@@ -413,37 +420,61 @@
     {"姓名": "缪云婷", "性别": "女", "身份证号": "51102420130209312X"},
     {"姓名": "陈星澔", "性别": "男", "身份证号": "511024201211193176"}
 ];
-        
 
-        // 初始化显示所有学生
-        displayStudents(studentData);
-
-        // 搜索功能
-        document.getElementById('name-search').addEventListener('input', function() {
-            filterAndSortStudents();
-        });
-
-        // 排序功能
-        document.getElementById('sort-select').addEventListener('change', function() {
-            filterAndSortStudents();
-        });
-
-        // 过滤和排序学生
-        function filterAndSortStudents() {
-            const searchTerm = document.getElementById('name-search').value.toLowerCase();
-            const sortOption = document.getElementById('sort-select').value;
+        // 根据身份证号计算年龄
+        function calculateAge(idCard) {
+            if (!idCard || idCard.length !== 18) return '未知';
             
-            // 过滤学生
-            let filteredStudents = studentData.filter(student => 
-                student.姓名.toLowerCase().includes(searchTerm)
-            );
+            const birthYear = parseInt(idCard.substring(6, 10));
+            const birthMonth = parseInt(idCard.substring(10, 12));
+            const birthDay = parseInt(idCard.substring(12, 14));
             
-            // 排序学生
-            if (sortOption === 'name-asc') {
-                filteredStudents.sort((a, b) => a.姓名.localeCompare(b.姓名, 'zh-CN'));
-            } else if (sortOption === 'name-desc') {
-                filteredStudents.sort((a, b) => b.姓名.localeCompare(a.姓名, 'zh-CN'));
+            const today = new Date();
+            const currentYear = today.getFullYear();
+            const currentMonth = today.getMonth() + 1;
+            const currentDay = today.getDate();
+            
+            let age = currentYear - birthYear;
+            
+            // 如果当前月份小于出生月份，或者月份相同但日期小于出生日期，则年龄减1
+            if (currentMonth < birthMonth || (currentMonth === birthMonth && currentDay < birthDay)) {
+                age--;
             }
+            
+            return age;
+        }
+
+        // 处理学生数据，确保有年龄字段
+        function processStudentData() {
+            return studentData.map(student => {
+                // 如果学生数据中没有年龄字段，根据身份证号计算
+                if (!student.hasOwnProperty('年龄') || student.年龄 === undefined) {
+                    student.年龄 = calculateAge(student.身份证号);
+                }
+                return student;
+            });
+        }
+
+        // 筛选和显示学生
+        function filterAndDisplayStudents() {
+            const nameSearch = document.getElementById('name-search').value.toLowerCase();
+            const idSearch = document.getElementById('id-search').value.toLowerCase();
+            const ageSearch = document.getElementById('age-search').value;
+            
+            // 处理学生数据，确保有年龄
+            const processedStudents = processStudentData();
+            
+            // 筛选学生
+            let filteredStudents = processedStudents.filter(student => {
+                const nameMatch = student.姓名.toLowerCase().includes(nameSearch);
+                const idMatch = student.身份证号.toLowerCase().includes(idSearch);
+                const ageMatch = !ageSearch || student.年龄.toString() === ageSearch;
+                
+                return nameMatch && idMatch && ageMatch;
+            });
+            
+            // 按姓名排序
+            filteredStudents.sort((a, b) => a.姓名.localeCompare(b.姓名, 'zh-CN'));
             
             // 显示结果
             displayStudents(filteredStudents);
@@ -451,35 +482,55 @@
 
         // 显示学生数据
         function displayStudents(students) {
-            const tbody = document.getElementById('student-data');
+            const studentList = document.getElementById('student-list');
             const resultCount = document.getElementById('result-count');
             
             // 更新结果数量
             resultCount.textContent = students.length;
             
             // 清空现有数据
-            tbody.innerHTML = '';
+            studentList.innerHTML = '';
             
             // 如果没有结果
             if (students.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="3" class="no-results">未找到匹配的学生</td></tr>';
+                studentList.innerHTML = '<div class="no-results">未找到匹配的学生</div>';
                 return;
             }
             
-            // 添加学生数据
+            const studentCards = document.createElement('div');
+            studentCards.className = 'student-cards';
+            
             students.forEach(student => {
-                const row = document.createElement('tr');
+                const card = document.createElement('div');
+                card.className = 'student-card';
+                
                 const genderClass = student.性别 === '女' ? 'gender-female' : 'gender-male';
                 
-                row.innerHTML = `
-                    <td>${student.姓名}</td>
-                    <td class="${genderClass}">${student.性别}</td>
-                    <td>${student.身份证号}</td>
+                card.innerHTML = `
+                    <div class="student-name">${student.姓名}</div>
+                    <div class="student-info ${genderClass}">性别: ${student.性别}</div>
+                    <div class="student-info">年龄: ${student.年龄}岁</div>
+                    <div class="student-info">身份证: ${student.身份证号}</div>
                 `;
                 
-                tbody.appendChild(row);
+                studentCards.appendChild(card);
             });
+            
+            studentList.appendChild(studentCards);
         }
+
+        // 初始化
+        function init() {
+            filterAndDisplayStudents();
+            
+            // 添加事件监听
+            document.getElementById('name-search').addEventListener('input', filterAndDisplayStudents);
+            document.getElementById('id-search').addEventListener('input', filterAndDisplayStudents);
+            document.getElementById('age-search').addEventListener('change', filterAndDisplayStudents);
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
