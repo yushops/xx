@@ -3,38 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- 基础SEO信息 -->
     <title>学生信息查询系统 - 龙会镇中心学校</title>
-    <meta name="description" content="龙会镇中心学校2019级学生信息查询管理系统">
-    <meta name="keywords" content="学生信息,查询系统,龙会镇中心学校,教育管理">
-    <meta name="author" content="龙会镇中心学校">
-    
-    <!-- Favicon 网站图标 -->
-    <link rel="icon" type="image/x-icon" href="https://youke1.picui.cn/s1/2025/10/16/68f0c55538234.jpg">
-    <link rel="icon" type="image/png" href="https://youke1.picui.cn/s1/2025/10/16/68f0c55538234.jpg">
-    <link rel="apple-touch-icon" href="https://youke1.picui.cn/s1/2025/10/16/68f0c55538234.jpg">
-    
-    <!-- 主题色 -->
-    <meta name="theme-color" content="#1e88e5">
-    
-    <!-- Open Graph - 用于Facebook、微信、QQ等分享 -->
-    <meta property="og:title" content="学生信息查询系统 - 龙会镇中心学校">
-    <meta property="og:description" content="龙会镇中心学校2019级学生信息查询管理系统">
-    <meta property="og:image" content="https://youke1.picui.cn/s1/2025/10/16/68f0c55538234.jpg">
-    <meta property="og:url" content="https://lhz-school.edu.cn/student-system">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="龙会镇中心学校">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="学生信息查询系统">
-    <meta name="twitter:description" content="龙会镇中心学校学生信息查询管理系统">
-    <meta name="twitter:image" content="https://youke1.picui.cn/s1/2025/10/16/68f0c55538234.jpg">
-    
-    <!-- 其他社交媒体 -->
-    <meta name="robots" content="index, follow">
-    
     <style>
         * {
             margin: 0;
@@ -47,18 +16,165 @@
             background-color: #f0f2f5;
             color: #333;
             line-height: 1.6;
-            padding: 0;
         }
-        
+
+        /* 广告弹窗样式 */
+        .ad-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .ad-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .ad-title {
+            font-size: 20px;
+            color: #e91e63;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .ad-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .ad-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .ad-visit {
+            background: #4caf50;
+            color: white;
+        }
+
+        .ad-close {
+            background: #757575;
+            color: white;
+        }
+
+        /* 登录弹窗样式 */
+        .login-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .login-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-title {
+            font-size: 24px;
+            color: #1e88e5;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .form-group input:focus {
+            border-color: #1e88e5;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.2);
+        }
+
+        .login-btn {
+            background: #1e88e5;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #1565c0;
+        }
+
+        .error-message {
+            color: #f44336;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .vip-status {
+            background: #ffeb3b;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-align: center;
+            display: none;
+        }
+
+        /* 主容器样式 */
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 20px auto;
             background-color: white;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            display: none;
         }
         
         header {
@@ -67,6 +183,25 @@
             padding: 25px 30px;
             text-align: center;
             position: relative;
+        }
+        
+        .user-info {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+
+        .vip-badge {
+            background: gold;
+            color: #333;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
         }
         
         .school-header {
@@ -78,8 +213,8 @@
         }
         
         .school-logo-large {
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             background: white;
             display: flex;
@@ -90,14 +225,14 @@
         }
         
         .school-logo-large img {
-            width: 70px;
-            height: 70px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
         }
         
         .school-name {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
@@ -210,6 +345,13 @@
             margin-bottom: 5px;
         }
         
+        .id-number {
+            background: #f5f5f5;
+            padding: 8px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        
         .gender-female {
             color: #e91e63;
         }
@@ -282,28 +424,80 @@
             }
             
             .school-name {
-                font-size: 24px;
+                font-size: 28px;
             }
             
             .school-logo-large {
-                width: 60px;
-                height: 60px;
+                width: 100px;
+                height: 100px;
             }
             
             .school-logo-large img {
-                width: 50px;
-                height: 50px;
+                width: 90px;
+                height: 90px;
             }
             
             header {
+                padding: 20px;
+            }
+
+            .user-info {
+                position: static;
+                justify-content: center;
+                margin-top: 10px;
+            }
+
+            .login-content {
+                margin: 20px;
                 padding: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- 广告弹窗 -->
+    <div class="ad-modal" id="adModal">
+        <div class="ad-content">
+            <div class="ad-title">🎉 特别推荐</div>
+            <p>发现优质教育资源平台，点击了解更多</p>
+            <div class="ad-buttons">
+                <button class="ad-btn ad-visit" onclick="visitAd()">立即访问</button>
+                <button class="ad-btn ad-close" onclick="closeAd()">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 登录弹窗 -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-content">
+            <div class="login-title">系统登录</div>
+            <div class="vip-status" id="vipStatus"></div>
+            <div class="login-form">
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" id="username" placeholder="请输入用户名">
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" id="password" placeholder="请输入密码">
+                </div>
+                <div class="form-group">
+                    <label for="urlCode">URL验证码 (10位数字)</label>
+                    <input type="text" id="urlCode" placeholder="请输入10位数字验证码" maxlength="10">
+                </div>
+                <button class="login-btn" onclick="login()">登录</button>
+                <div class="error-message" id="errorMessage">登录信息错误</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主系统容器 -->
+    <div class="container" id="mainContainer">
         <header>
+            <div class="user-info" id="userInfo">
+                <span id="currentUser"></span>
+                <div class="vip-badge" id="vipBadge" style="display: none;">VIP</div>
+            </div>
             <div class="school-header">
                 <div class="school-logo-large">
                     <img src="https://youke1.picui.cn/s1/2025/10/16/68f0c55538234.jpg" alt="龙会镇中心学校校徽">
@@ -311,9 +505,10 @@
                 <div class="school-name">龙会镇中心学校</div>
             </div>
             <h1>学生信息查询系统</h1>
-            <p class="description">便捷查询学生信息，助力教育管理</p>
+            <p class="description">六年级学生信息查询</p>
         </header>
         
+        <!-- 搜索区域 -->
         <div class="search-container">
             <div class="search-field">
                 <label for="name-search">按姓名搜索</label>
@@ -329,17 +524,18 @@
                 <label for="age-search">按年龄搜索</label>
                 <select id="age-search">
                     <option value="">全部年龄</option>
-
-  <option value="12">12岁</option>
+                    <option value="10">10岁</option>
+                    <option value="11">11岁</option>
+                    <option value="12">12岁</option>
                     <option value="13">13岁</option>
-
+                    <option value="14">14岁</option>
                 </select>
             </div>
         </div>
         
         <div class="results-info">
             <div>共找到 <span id="result-count">0</span> 名学生</div>
-            <div>龙会镇中心学校 学生信息管理系统</div>
+            <div>龙会镇中心学校 六年级学生信息</div>
         </div>
         
         <div class="student-list" id="student-list">
@@ -355,7 +551,40 @@
     </div>
 
     <script>
-        // 学生数据 - 请在此处填入您的实际数据
+        // 账户数据 - 可以在这里添加新账户
+        const accounts = {
+            "Administrator": {
+                password: "AZ1994",
+                urlCode: "1234567890", // 10位数字验证码
+                vipStartDate: "2025.10.10", // VIP开始日期，0表示未启用
+                vipDuration: 99999999, // VIP时长(天)
+                isSuperAdmin: true
+            },
+            "MS117": {
+                password: "ASZ11982",
+                urlCode: "1919810541",
+                vipStartDate: "2025.10.10",
+                vipDuration: 15,
+                isSuperAdmin: false
+            },
+            "teacher2": {
+                password: "teacher456",
+                urlCode: "1122334455",
+                vipStartDate: "2025.10.15",
+                vipDuration: 15,
+                isSuperAdmin: false
+            }
+            // 要添加新账户，请按照以下格式添加：
+            // "用户名": {
+            //     password: "密码",
+            //     urlCode: "10位数字验证码",
+            //     vipStartDate: "VIP开始日期(0表示未启用)",
+            //     vipDuration: VIP时长(天),
+            //     isSuperAdmin: false
+            // }
+        };
+
+        // 六年级学生数据
        // 六年级学生数据（从您提供的Excel文件中提取）
 const studentData = [
     // 六年级(1)班
@@ -557,6 +786,104 @@ const studentData = [
     {"姓名": "陈星澔", "性别": "男", "身份证号": "511024201211193176"}
 ];
 
+        let currentUser = null;
+
+        // 广告功能
+        function showAd() {
+            setTimeout(() => {
+                document.getElementById('adModal').style.display = 'flex';
+            }, 3000); // 3秒后显示广告
+        }
+
+        function visitAd() {
+            window.open('https://91porn.com/', '_blank');
+            closeAd();
+        }
+
+        function closeAd() {
+            document.getElementById('adModal').style.display = 'none';
+        }
+
+        // VIP状态检查
+        function checkVIPStatus(account) {
+            if (account.vipStartDate === "0") {
+                return { isVIP: false, daysLeft: 0 };
+            }
+            
+            const startDate = new Date(account.vipStartDate.replace(/\./g, '-'));
+            const endDate = new Date(startDate);
+            endDate.setDate(startDate.getDate() + account.vipDuration);
+            const today = new Date();
+            
+            const daysLeft = Math.ceil((endDate - today) / (1000 * 60 * 60 * 24));
+            
+            return {
+                isVIP: daysLeft > 0,
+                daysLeft: daysLeft > 0 ? daysLeft : 0
+            };
+        }
+
+        // 登录功能
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const urlCode = document.getElementById('urlCode').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const vipStatus = document.getElementById('vipStatus');
+            
+            // 重置状态
+            errorMessage.style.display = 'none';
+            vipStatus.style.display = 'none';
+            
+            // 检查账户是否存在
+            if (accounts[username]) {
+                const account = accounts[username];
+                
+                // 检查密码和验证码
+                if (account.password === password && account.urlCode === urlCode) {
+                    currentUser = username;
+                    
+                    // 检查VIP状态
+                    const vipInfo = checkVIPStatus(account);
+                    
+                    // 显示VIP状态
+                    if (vipInfo.isVIP) {
+                        vipStatus.innerHTML = `🎉 VIP会员，剩余 ${vipInfo.daysLeft} 天`;
+                        vipStatus.style.display = 'block';
+                        vipStatus.style.background = '#4caf50';
+                        vipStatus.style.color = 'white';
+                    } else if (account.vipStartDate !== "0") {
+                        vipStatus.innerHTML = '❌ VIP已过期';
+                        vipStatus.style.display = 'block';
+                        vipStatus.style.background = '#f44336';
+                        vipStatus.style.color = 'white';
+                    }
+                    
+                    // 登录成功
+                    setTimeout(() => {
+                        document.getElementById('loginModal').style.display = 'none';
+                        document.getElementById('mainContainer').style.display = 'block';
+                        document.getElementById('currentUser').textContent = `欢迎，${username}`;
+                        
+                        // 显示VIP徽章
+                        if (vipInfo.isVIP) {
+                            document.getElementById('vipBadge').style.display = 'block';
+                        }
+                        
+                        initSystem();
+                        showAd(); // 显示广告
+                    }, 1000);
+                    
+                } else {
+                    errorMessage.textContent = '密码或验证码错误！';
+                    errorMessage.style.display = 'block';
+                }
+            } else {
+                errorMessage.textContent = '用户名不存在！';
+                errorMessage.style.display = 'block';
+            }
+        }
+
         // 根据身份证号计算年龄
         function calculateAge(idCard) {
             if (!idCard || idCard.length !== 18) return '未知';
@@ -601,6 +928,9 @@ const studentData = [
             const ageSearch = document.getElementById('age-search').value;
             
             const processedStudents = processStudentData();
+            const currentAccount = accounts[currentUser];
+            const vipInfo = checkVIPStatus(currentAccount);
+            const canViewID = vipInfo.isVIP || currentAccount.isSuperAdmin;
             
             let filteredStudents = processedStudents.filter(student => {
                 const nameMatch = student.姓名.toLowerCase().includes(nameSearch);
@@ -611,11 +941,11 @@ const studentData = [
             });
             
             filteredStudents.sort((a, b) => a.姓名.localeCompare(b.姓名, 'zh-CN'));
-            displayStudents(filteredStudents);
+            displayStudents(filteredStudents, canViewID);
         }
 
         // 显示学生数据
-        function displayStudents(students) {
+        function displayStudents(students, canViewID) {
             const studentList = document.getElementById('student-list');
             const resultCount = document.getElementById('result-count');
             
@@ -637,12 +967,19 @@ const studentData = [
                 const genderClass = student.性别 === '女' ? 'gender-female' : 'gender-male';
                 const avatarText = getAvatarText(student.姓名);
                 
+                let idDisplay = '***';
+                if (canViewID) {
+                    idDisplay = `<div class="id-number">${student.身份证号}</div>`;
+                } else {
+                    idDisplay = '<div class="student-info">身份证: <span style="color: #ff5722;">VIP会员可查看完整身份证号</span></div>';
+                }
+                
                 card.innerHTML = `
                     <div class="student-avatar">${avatarText}</div>
                     <div class="student-name">${student.姓名}</div>
                     <div class="student-info ${genderClass}">性别: ${student.性别}</div>
                     <div class="student-info">年龄: ${student.年龄}岁</div>
-                    <div class="student-info">身份证: ${student.身份证号}</div>
+                    ${idDisplay}
                 `;
                 
                 studentCards.appendChild(card);
@@ -651,8 +988,8 @@ const studentData = [
             studentList.appendChild(studentCards);
         }
 
-        // 初始化
-        function init() {
+        // 系统初始化
+        function initSystem() {
             filterAndDisplayStudents();
             
             document.getElementById('name-search').addEventListener('input', filterAndDisplayStudents);
@@ -660,7 +997,18 @@ const studentData = [
             document.getElementById('age-search').addEventListener('change', filterAndDisplayStudents);
         }
 
-        document.addEventListener('DOMContentLoaded', init);
+        // 支持按回车键登录
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                login();
+            }
+        });
+
+        document.getElementById('urlCode').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                login();
+            }
+        });
     </script>
 </body>
 </html>
