@@ -16,6 +16,98 @@
             background-color: #f0f2f5;
             color: #333;
             line-height: 1.6;
+            transition: background 0.5s ease;
+            min-height: 100vh;
+        }
+
+        /* 背景样式 */
+        .background-red-blue-dynamic {
+            background: linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #ff6b6b);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        .background-red-blue-static {
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+        }
+
+        .background-blue-green-dynamic {
+            background: linear-gradient(-45deg, #a8e6cf, #dcedc1, #ffd3b6, #ffaaa5);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        .background-blue-green-static {
+            background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 风险警告弹窗样式 */
+        .warning-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+        }
+
+        .warning-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .warning-title {
+            font-size: 24px;
+            color: #f44336;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 2px solid #f44336;
+            padding-bottom: 10px;
+        }
+
+        .warning-text {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .warning-text p {
+            margin-bottom: 15px;
+        }
+
+        .warning-btn {
+            background: #f44336;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .warning-btn:hover {
+            background: #d32f2f;
         }
 
         /* 广告弹窗样式 */
@@ -82,7 +174,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             z-index: 1000;
@@ -166,6 +258,135 @@
             display: none;
         }
 
+        /* 设置面板样式 */
+        .settings-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1500;
+        }
+
+        .settings-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .settings-title {
+            font-size: 24px;
+            color: #1e88e5;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .settings-section {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .settings-section-title {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .avatar-preview {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #1e88e5;
+        }
+
+        .avatar-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-preview .avatar-placeholder {
+            font-size: 24px;
+            color: #999;
+        }
+
+        .settings-btn {
+            background: #1e88e5;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .settings-btn:hover {
+            background: #1565c0;
+        }
+
+        .settings-btn-danger {
+            background: #f44336;
+        }
+
+        .settings-btn-danger:hover {
+            background: #d32f2f;
+        }
+
+        .background-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .background-option {
+            flex: 1;
+            min-width: 120px;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .background-option:hover {
+            border-color: #1e88e5;
+        }
+
+        .background-option.active {
+            border-color: #1e88e5;
+            background-color: #e3f2fd;
+        }
+
+        .background-preview {
+            width: 100%;
+            height: 40px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+        }
+
         /* 主容器样式 */
         .container {
             max-width: 1200px;
@@ -193,6 +414,26 @@
             align-items: center;
             gap: 10px;
             color: white;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            border: 2px solid white;
+            overflow: hidden;
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .vip-badge {
@@ -447,14 +688,55 @@
                 margin-top: 10px;
             }
 
-            .login-content {
+            .login-content, .settings-content {
                 margin: 20px;
                 padding: 20px;
+            }
+            
+            .warning-content {
+                padding: 20px;
+            }
+            
+            .warning-title {
+                font-size: 20px;
+            }
+            
+            .warning-text {
+                font-size: 14px;
             }
         }
     </style>
 </head>
-<body>
+<body class="background-red-blue-static">
+    <!-- 风险警告弹窗 -->
+    <div class="warning-modal" id="warningModal">
+        <div class="warning-content">
+            <div class="warning-title">⚠️ 重要安全警告</div>
+            <div class="warning-text">
+                <p>尊敬的用户，欢迎使用龙会镇中心学校学生信息查询系统。在使用本系统前，请您仔细阅读并理解以下重要安全警告：</p>
+                
+                <p>1. 本系统包含高度敏感的学生个人信息，包括但不限于姓名、身份证号码、年龄等个人身份识别信息。这些信息受到《中华人民共和国个人信息保护法》等相关法律法规的严格保护。</p>
+                
+                <p>2. 未经授权访问、使用、泄露、篡改或破坏学生个人信息的行为是严格禁止的，可能构成违法犯罪行为，将依法追究相关责任人的法律责任。</p>
+                
+                <p>3. 本系统仅供龙会镇中心学校授权人员使用。任何未经授权的访问尝试将被记录并可能触发安全警报。系统管理员将监控所有访问活动，异常行为将立即报告给相关部门。</p>
+                
+                <p>4. 使用本系统即表示您同意遵守所有适用的法律法规和学校的信息安全政策。您有责任保护您的登录凭证，不得将其分享给任何其他人。</p>
+                
+                <p>5. 如果您发现任何安全漏洞或可疑活动，请立即向系统管理员报告。故意利用系统漏洞获取未授权信息的行为将受到严厉处罚。</p>
+                
+                <p>6. 根据《中华人民共和国网络安全法》和《儿童个人信息网络保护规定》，处理未成年人个人信息需要特别谨慎。我们已采取技术和管理措施确保学生信息的安全，但每位授权用户也有责任维护这一安全环境。</p>
+                
+                <p>7. 任何违反信息安全规定的行为可能导致纪律处分、法律诉讼，并可能影响您的职业发展。请务必谨慎、负责任地使用本系统。</p>
+                
+                <p>8. 系统会记录所有查询操作，包括查询时间、查询内容和查询用户。这些日志将保留至少三年，用于安全审计和事件调查。</p>
+                
+                <p>继续使用本系统即表示您已阅读、理解并同意遵守上述所有条款和条件。如果您不同意这些条款，请立即关闭本系统。</p>
+            </div>
+            <button class="warning-btn" id="warningConfirmBtn">我已阅读并理解上述警告</button>
+        </div>
+    </div>
+
     <!-- 广告弹窗 -->
     <div class="ad-modal" id="adModal">
         <div class="ad-content">
@@ -482,7 +764,7 @@
                     <input type="password" id="password" placeholder="请输入密码">
                 </div>
                 <div class="form-group">
-                    <label for="urlCode">URL验证码 (10位数字)</label>
+                    <label for="urlCode">验证码</label>
                     <input type="text" id="urlCode" placeholder="请输入10位数字验证码" maxlength="10">
                 </div>
                 <button class="login-btn" onclick="login()">登录</button>
@@ -491,10 +773,81 @@
         </div>
     </div>
 
+    <!-- 设置面板 -->
+    <div class="settings-modal" id="settingsModal">
+        <div class="settings-content">
+            <div class="settings-title">用户设置</div>
+            
+            <div class="settings-section">
+                <div class="settings-section-title">个人信息</div>
+                <div class="avatar-preview" id="avatarPreview">
+                    <div class="avatar-placeholder">头像</div>
+                </div>
+                <div class="form-group">
+                    <label for="displayName">显示名称</label>
+                    <input type="text" id="displayName" placeholder="请输入显示名称">
+                </div>
+                <div class="form-group">
+                    <label for="employeeLevel">职工等级</label>
+                    <select id="employeeLevel">
+                        <option value="普通教师">普通教师</option>
+                        <option value="高级教师">高级教师</option>
+                        <option value="年级组长">年级组长</option>
+                        <option value="教务主任">教务主任</option>
+                        <option value="副校长">副校长</option>
+                        <option value="校长">校长</option>
+                    </select>
+                </div>
+                <button class="settings-btn" onclick="uploadAvatar()">上传头像</button>
+                <button class="settings-btn" onclick="saveProfile()">保存设置</button>
+            </div>
+            
+            <div class="settings-section">
+                <div class="settings-section-title">背景设置</div>
+                <div class="background-options">
+                    <div class="background-option" data-bg="red-blue-dynamic">
+                        <div class="background-preview" style="background: linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #ff6b6b); background-size: 400% 400%;"></div>
+                        <div>红蓝动态</div>
+                    </div>
+                    <div class="background-option" data-bg="red-blue-static">
+                        <div class="background-preview" style="background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);"></div>
+                        <div>红蓝静态</div>
+                    </div>
+                    <div class="background-option" data-bg="blue-green-dynamic">
+                        <div class="background-preview" style="background: linear-gradient(-45deg, #a8e6cf, #dcedc1, #ffd3b6, #ffaaa5); background-size: 400% 400%;"></div>
+                        <div>蓝绿动态</div>
+                    </div>
+                    <div class="background-option" data-bg="blue-green-static">
+                        <div class="background-preview" style="background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);"></div>
+                        <div>蓝绿静态</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <div class="settings-section-title">账户管理</div>
+                <button class="settings-btn" onclick="switchAccount()">切换账户</button>
+                <button class="settings-btn settings-btn-danger" onclick="logout()">退出登录</button>
+            </div>
+            
+            <div class="settings-section">
+                <div class="settings-section-title">系统信息</div>
+                <p>当前用户: <span id="currentUserInfo"></span></p>
+                <p>登录时间: <span id="loginTime"></span></p>
+                <p>VIP状态: <span id="vipInfo"></span></p>
+            </div>
+            
+            <button class="settings-btn" onclick="closeSettings()" style="margin-top: 20px;">关闭设置</button>
+        </div>
+    </div>
+
     <!-- 主系统容器 -->
     <div class="container" id="mainContainer">
         <header>
             <div class="user-info" id="userInfo">
+                <div class="user-avatar" id="userAvatar" onclick="openSettings()">
+                    <div class="avatar-placeholder">头</div>
+                </div>
                 <span id="currentUser"></span>
                 <div class="vip-badge" id="vipBadge" style="display: none;">VIP</div>
             </div>
@@ -551,13 +904,12 @@
     </div>
 
     <script>
-        // 账户数据 - 可以在这里添加新账户
         const accounts = {
             "Administrator": {
                 password: "AZ1994",
-                urlCode: "1234567890", // 10位数字验证码
-                vipStartDate: "2025.10.10", // VIP开始日期，0表示未启用
-                vipDuration: 99999999, // VIP时长(天)
+                urlCode: "1234567890",
+                vipStartDate: "2025.10.10",
+                vipDuration: 3000,
                 isSuperAdmin: true
             },
             "MS117": {
@@ -574,18 +926,9 @@
                 vipDuration: 15,
                 isSuperAdmin: false
             }
-            // 要添加新账户，请按照以下格式添加：
-            // "用户名": {
-            //     password: "密码",
-            //     urlCode: "10位数字验证码",
-            //     vipStartDate: "VIP开始日期(0表示未启用)",
-            //     vipDuration: VIP时长(天),
-            //     isSuperAdmin: false
-            // }
         };
 
-        // 六年级学生数据
-       // 六年级学生数据（从您提供的Excel文件中提取）
+        // 六年级学生数据（从您提供的Excel文件中提取）
 const studentData = [
     // 六年级(1)班
     {"姓名": "曾浩然", "性别": "男", "身份证号": "511024201209183534"},
@@ -787,12 +1130,54 @@ const studentData = [
 ];
 
         let currentUser = null;
+        let userProfile = {};
+
+        // 页面加载时检查本地存储
+        window.addEventListener('load', function() {
+            const savedUser = localStorage.getItem('currentUser');
+            const savedProfile = localStorage.getItem('userProfile');
+            const savedBackground = localStorage.getItem('background');
+            
+            if (savedBackground) {
+                document.body.className = `background-${savedBackground}`;
+            }
+            
+            if (savedUser && savedProfile) {
+                currentUser = savedUser;
+                userProfile = JSON.parse(savedProfile);
+                
+                if (userProfile.rememberLogin) {
+                    document.getElementById('mainContainer').style.display = 'block';
+                    document.getElementById('currentUser').textContent = `欢迎，${userProfile.displayName || currentUser}`;
+                    
+                    if (userProfile.avatar) {
+                        document.getElementById('userAvatar').innerHTML = `<img src="${userProfile.avatar}" alt="用户头像">`;
+                    }
+                    
+                    const vipInfo = checkVIPStatus(accounts[currentUser]);
+                    if (vipInfo.isVIP) {
+                        document.getElementById('vipBadge').style.display = 'block';
+                    }
+                    
+                    initSystem();
+                    return;
+                }
+            }
+            
+            document.getElementById('warningModal').style.display = 'flex';
+        });
+
+        // 风险警告确认
+        document.getElementById('warningConfirmBtn').addEventListener('click', function() {
+            document.getElementById('warningModal').style.display = 'none';
+            document.getElementById('loginModal').style.display = 'flex';
+        });
 
         // 广告功能
         function showAd() {
             setTimeout(() => {
                 document.getElementById('adModal').style.display = 'flex';
-            }, 3000); // 3秒后显示广告
+            }, 3000);
         }
 
         function visitAd() {
@@ -831,22 +1216,17 @@ const studentData = [
             const errorMessage = document.getElementById('errorMessage');
             const vipStatus = document.getElementById('vipStatus');
             
-            // 重置状态
             errorMessage.style.display = 'none';
             vipStatus.style.display = 'none';
             
-            // 检查账户是否存在
             if (accounts[username]) {
                 const account = accounts[username];
                 
-                // 检查密码和验证码
                 if (account.password === password && account.urlCode === urlCode) {
                     currentUser = username;
                     
-                    // 检查VIP状态
                     const vipInfo = checkVIPStatus(account);
                     
-                    // 显示VIP状态
                     if (vipInfo.isVIP) {
                         vipStatus.innerHTML = `🎉 VIP会员，剩余 ${vipInfo.daysLeft} 天`;
                         vipStatus.style.display = 'block';
@@ -859,19 +1239,31 @@ const studentData = [
                         vipStatus.style.color = 'white';
                     }
                     
-                    // 登录成功
                     setTimeout(() => {
                         document.getElementById('loginModal').style.display = 'none';
                         document.getElementById('mainContainer').style.display = 'block';
-                        document.getElementById('currentUser').textContent = `欢迎，${username}`;
                         
-                        // 显示VIP徽章
+                        if (!userProfile.displayName) {
+                            userProfile = {
+                                displayName: username,
+                                employeeLevel: "普通教师",
+                                avatar: null,
+                                rememberLogin: true,
+                                loginTime: new Date().toLocaleString()
+                            };
+                        }
+                        
+                        document.getElementById('currentUser').textContent = `欢迎，${userProfile.displayName}`;
+                        
                         if (vipInfo.isVIP) {
                             document.getElementById('vipBadge').style.display = 'block';
                         }
                         
+                        localStorage.setItem('currentUser', currentUser);
+                        localStorage.setItem('userProfile', JSON.stringify(userProfile));
+                        
                         initSystem();
-                        showAd(); // 显示广告
+                        showAd();
                     }, 1000);
                     
                 } else {
@@ -881,6 +1273,103 @@ const studentData = [
             } else {
                 errorMessage.textContent = '用户名不存在！';
                 errorMessage.style.display = 'block';
+            }
+        }
+
+        // 设置面板功能
+        function openSettings() {
+            document.getElementById('settingsModal').style.display = 'flex';
+            document.getElementById('displayName').value = userProfile.displayName || currentUser;
+            document.getElementById('employeeLevel').value = userProfile.employeeLevel || "普通教师";
+            document.getElementById('currentUserInfo').textContent = currentUser;
+            document.getElementById('loginTime').textContent = userProfile.loginTime || new Date().toLocaleString();
+            
+            const vipInfo = checkVIPStatus(accounts[currentUser]);
+            document.getElementById('vipInfo').textContent = vipInfo.isVIP ? `VIP会员，剩余${vipInfo.daysLeft}天` : "非VIP会员";
+            
+            const avatarPreview = document.getElementById('avatarPreview');
+            if (userProfile.avatar) {
+                avatarPreview.innerHTML = `<img src="${userProfile.avatar}" alt="用户头像">`;
+            } else {
+                avatarPreview.innerHTML = '<div class="avatar-placeholder">头像</div>';
+            }
+            
+            // 设置背景选项
+            const currentBg = document.body.className.replace('background-', '');
+            const bgOptions = document.querySelectorAll('.background-option');
+            bgOptions.forEach(option => {
+                option.classList.remove('active');
+                if (option.dataset.bg === currentBg) {
+                    option.classList.add('active');
+                }
+                
+                option.addEventListener('click', function() {
+                    const bgType = this.dataset.bg;
+                    document.body.className = `background-${bgType}`;
+                    localStorage.setItem('background', bgType);
+                    
+                    bgOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        }
+
+        function closeSettings() {
+            document.getElementById('settingsModal').style.display = 'none';
+        }
+
+        function uploadAvatar() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        userProfile.avatar = event.target.result;
+                        document.getElementById('avatarPreview').innerHTML = `<img src="${userProfile.avatar}" alt="用户头像">`;
+                        document.getElementById('userAvatar').innerHTML = `<img src="${userProfile.avatar}" alt="用户头像">`;
+                        localStorage.setItem('userProfile', JSON.stringify(userProfile));
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            
+            input.click();
+        }
+
+        function saveProfile() {
+            userProfile.displayName = document.getElementById('displayName').value;
+            userProfile.employeeLevel = document.getElementById('employeeLevel').value;
+            
+            document.getElementById('currentUser').textContent = `欢迎，${userProfile.displayName}`;
+            localStorage.setItem('userProfile', JSON.stringify(userProfile));
+            
+            alert('个人信息已保存！');
+        }
+
+        function switchAccount() {
+            if (confirm('确定要切换账户吗？当前设置将保存。')) {
+                localStorage.removeItem('currentUser');
+                document.getElementById('settingsModal').style.display = 'none';
+                document.getElementById('mainContainer').style.display = 'none';
+                document.getElementById('loginModal').style.display = 'flex';
+            }
+        }
+
+        function logout() {
+            if (confirm('确定要退出登录吗？')) {
+                localStorage.removeItem('currentUser');
+                localStorage.removeItem('userProfile');
+                document.getElementById('settingsModal').style.display = 'none';
+                document.getElementById('mainContainer').style.display = 'none';
+                document.getElementById('loginModal').style.display = 'flex';
+                
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+                document.getElementById('urlCode').value = '';
             }
         }
 
